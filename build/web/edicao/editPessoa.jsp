@@ -2,7 +2,7 @@
         
 <jsp:useBean id="pessoa" scope="session" class="br.com.senacrs.bean.Pessoa" />
 
-<form name="formulario" action="/PessoaWeb/Controller?classe=ControllerLogicPessoaEditar" method="POST">
+<form name="formulario" action="/PessoaWeb/Controller?classe=ControllerLogicPessoa&metodo=editar" method="POST">
             <table border="0">
                 <thead>
                     <tr>

@@ -15,6 +15,12 @@ import java.io.IOException;
  */
 public interface ControllerLogic {
     
-    public void executar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    public void adicionar(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException;
+    public void editar(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException;
+    public void editarPopular(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException;
+    public void excluir(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException;
+    public void listar(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException;
+   
+    //public void executar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     
 }

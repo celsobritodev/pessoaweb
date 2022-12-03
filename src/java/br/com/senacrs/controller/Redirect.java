@@ -4,23 +4,18 @@
  */
 package br.com.senacrs.controller;
 
-import br.com.senacrs.controller.logic.ControllerLogic;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Usuario
  */
-public class Controller extends HttpServlet {
+public class Redirect extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,24 +28,10 @@ public class Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            // controlador que recebera todas as requisicoes
-          
-            Class classe = Class.forName("br.com.senacrs.controller.logic."+request.getParameter("classe"));
-           
-            Method metodo = classe.getMethod(request.getParameter("metodo"), HttpServletRequest.class,HttpServletResponse.class);
-            
-            ControllerLogic controller = (ControllerLogic) classe.newInstance();
-            
-            metodo.invoke(controller,request,response);
-          //  controller.executar(request,response);
-            
-        } catch ( ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | SecurityException ex) {
-           log (ex.getMessage());
-        } catch (IllegalArgumentException | InvocationTargetException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
+      
+        response.sendRedirect(request.getParameter("page"));
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

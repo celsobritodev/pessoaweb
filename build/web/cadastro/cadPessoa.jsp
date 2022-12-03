@@ -1,5 +1,5 @@
 <jsp:include page="/header.jsp"/>
-        <form name="formulario" action="/PessoaWeb/Controller?classe=ControllerLogicPessoaCadastrar" method="POST">
+        <form name="formulario" action="/PessoaWeb/Controller?classe=ControllerLogicPessoa&metodo=adicionar" method="POST">
             <table border="0">
                 <thead>
                     <tr>
