@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class ConnectionFactory {
    
     public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    public static final String URL = "jdbc:mysql://localhost:3306/dbconsole";
+    public static final String URL = "jdbc:mysql://localhost:3306/BDPessoa";
     public static final String USER_LOGIN = "root";
     public static final String USER_PASSWD = "admin";
     
