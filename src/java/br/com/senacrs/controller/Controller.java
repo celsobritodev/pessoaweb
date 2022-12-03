@@ -2,21 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package br.com.senacrs.servlet;
+package br.com.senacrs.controller;
 
-import br.com.senacrs.bean.Endereco;
-import br.com.senacrs.bean.Pessoa;
+import br.com.senacrs.controller.logic.ControllerLogic;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Celso
+ * @author Usuario
  */
-public class PessoaServlet extends HttpServlet {
+public class Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,27 +31,16 @@ public class PessoaServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        Pessoa pessoa = new Pessoa();
-        Endereco endereco = new Endereco();
-        
-        pessoa.setNome(request.getParameter("nome"));
-        pessoa.setSobrenome(request.getParameter("sobrenome"));
-        
-        endereco.setBairro(request.getParameter("bairro"));
-        endereco.setCep(request.getParameter("cep"));
-        endereco.setRua(request.getParameter("rua"));
-        
-        pessoa.setEndereco(endereco);
-        
-        request.setAttribute("pessoa", pessoa);
-        
-        request.getRequestDispatcher("visualizaPessoa.jsp").forward(request, response);
-        
-       
+        try {
+            // controlador que recebera todas as requisicoes
+            Class classe = Class.forName("br.com.senacrs.controller.logic."+request.getParameter("classe"));
+            ControllerLogic controller = (ControllerLogic) classe.newInstance();
+            controller.executar(request,response);
+        } catch ( Exception ex) {
+           log (ex.getMessage());
+        }
+    
     }
-
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

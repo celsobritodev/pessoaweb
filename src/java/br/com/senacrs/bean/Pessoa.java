@@ -19,6 +19,7 @@ public class Pessoa implements  Serializable{
     public Pessoa() {
         nome = "";
         sobrenome = "";
+        endereco = new Endereco();
     }
     
     
