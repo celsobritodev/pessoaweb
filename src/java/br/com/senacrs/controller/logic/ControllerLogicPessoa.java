@@ -54,7 +54,8 @@ public class ControllerLogicPessoa implements ControllerLogic {
         PessoaDAO pd = new JDBCPessoaDAO();
         pd.editar(pessoa);
         
-        request.getSession().setAttribute("pessoa", pessoa);
+        //request.getSession().setAttribute("pessoa", pessoa);
+        request.setAttribute("pessoa", pessoa);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

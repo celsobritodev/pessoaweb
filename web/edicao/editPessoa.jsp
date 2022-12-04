@@ -1,6 +1,6 @@
 <jsp:include page="/header.jsp" />
         
-<jsp:useBean id="pessoa" scope="session" class="br.com.senacrs.bean.Pessoa" />
+<jsp:useBean id="pessoa" scope="request" class="br.com.senacrs.bean.Pessoa" />
 
 <form name="formulario" action="/PessoaWeb/Controller?classe=ControllerLogicPessoa&metodo=editar" method="POST">
             <table border="0">
