@@ -40,44 +40,48 @@ public class ControllerLogicPessoa implements ControllerLogic {
 
     @Override
     public void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                
-                Pessoa pessoa = new Pessoa();
-                pessoa.setNome(request.getParameter("nome"));
-                pessoa.setSobrenome(request.getParameter("sobrenome"));
 
-                pessoa.getEndereco().setBairro(request.getParameter("bairro"));
-                pessoa.getEndereco().setCep(request.getParameter("cep"));
-                pessoa.getEndereco().setRua(request.getParameter("rua"));
+        Pessoa pessoa = new Pessoa();
+        int id =Integer.parseInt(request.getParameter("id"));
+        pessoa.setId(id);
+        pessoa.setNome(request.getParameter("nome"));
+        pessoa.setSobrenome(request.getParameter("sobrenome"));
 
-                request.getSession().setAttribute("pessoa", pessoa);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+        pessoa.getEndereco().setBairro(request.getParameter("bairro"));
+        pessoa.getEndereco().setCep(request.getParameter("cep"));
+        pessoa.getEndereco().setRua(request.getParameter("rua"));
+
+        PessoaDAO pd = new JDBCPessoaDAO();
+        pd.editar(pessoa);
+        
+        request.getSession().setAttribute("pessoa", pessoa);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     @Override
     public void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     
-               int id =Integer.parseInt(request.getParameter("id"));
-               PessoaDAO pd = new JDBCPessoaDAO();
-               pd.remover(id);
-               request.getRequestDispatcher("index.jsp").forward(request, response);
-       
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        PessoaDAO pd = new JDBCPessoaDAO();
+        pd.remover(id);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+
     }
 
     @Override
     public void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
 
-       PessoaDAO p = new JDBCPessoaDAO();
-       request.setAttribute("pessoas", p.listar());
-       request.getRequestDispatcher("listapessoa").forward(request, response);
-     
+        PessoaDAO p = new JDBCPessoaDAO();
+        request.setAttribute("pessoas", p.listar());
+        request.getRequestDispatcher("listaPessoa").forward(request, response);
+
     }
 
     @Override
     public void editarPopular(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
-         int id =Integer.parseInt(request.getParameter("id"));
-         PessoaDAO pd = new JDBCPessoaDAO();
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        PessoaDAO pd = new JDBCPessoaDAO();
         Pessoa p = pd.buscar(id);
         request.setAttribute("pessoa", p);
         request.getRequestDispatcher("editPessoa").forward(request, response);

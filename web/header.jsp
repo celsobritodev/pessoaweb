@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Java EE</title>
-    <h3> <a href="/PessoaWeb">Home</a> </h3>
+    <h3> <a href="/PessoaWeb/index.jsp">Home</a> </h3>
     <CENTER>
         <img src="/PessoaWeb/imagens/mussumcacique.jpg" width="453" height="352" alt="mussumcacique"/>
     </CENTER>

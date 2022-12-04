@@ -29,7 +29,9 @@ public class Redirect extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       
-        response.sendRedirect(request.getParameter("page"));
+        String pageName =    request.getParameter("page");
+        
+        response.sendRedirect(pageName);
         
         
     }

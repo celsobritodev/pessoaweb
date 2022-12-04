@@ -35,10 +35,15 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         try {
             // controlador que recebera todas as requisicoes
-          
-            Class classe = Class.forName("br.com.senacrs.controller.logic."+request.getParameter("classe"));
+            String nomeClasse=request.getParameter("classe");
            
-            Method metodo = classe.getMethod(request.getParameter("metodo"), HttpServletRequest.class,HttpServletResponse.class);
+            String nomeMetodo = request.getParameter("metodo");
+            
+            String fullPathClasse = "br.com.senacrs.controller.logic."+nomeClasse;
+            
+            Class classe = Class.forName(fullPathClasse);
+           
+            Method metodo = classe.getMethod(nomeMetodo, HttpServletRequest.class,HttpServletResponse.class);
             
             ControllerLogic controller = (ControllerLogic) classe.newInstance();
             

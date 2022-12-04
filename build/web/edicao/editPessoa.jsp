@@ -6,10 +6,14 @@
             <table border="0">
                 <thead>
                     <tr>
-                        <th> Altera??o no cadastro de Pessoa </th>                        
+                        <th> Alteração no cadastro de Pessoa </th>                        
                     </tr>
                 </thead>
                 <tbody>
+                     <tr>
+                        <td>ID: </td>
+                        <td> <input type="text" readonly="readonly" name="id" value="${pessoa.id}" size="30" /> </td>
+                    </tr>
                     <tr>
                         <td>Nome: </td>
                         <td> <input type="text" name="nome" value="${pessoa.nome}" size="30" /> </td>

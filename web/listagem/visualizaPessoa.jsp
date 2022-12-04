@@ -28,8 +28,8 @@
                     <td>${pessoa.endereco.rua}</td><!-- comment -->
                     <td>${pessoa.endereco.bairro}</td><!-- comment -->
                     <td>${pessoa.endereco.cep}</td>
-                    <td> <a href="Controller?classe=ControllerLogicPessoa&metodo=editarPopular=${pessoa.id}">Editar</a></td>
-                    <td> <a href="Controller?classe=ControllerLogicPessoa&metodo=excluir=${pessoa.id}">Editar</a></td>
+                    <td> <a href="Controller?classe=ControllerLogicPessoa&metodo=editarPopular&id=${pessoa.id}">Editar</a></td>
+                    <td> <a href="Controller?classe=ControllerLogicPessoa&metodo=excluir&id=${pessoa.id}">Excluir</a></td>
                 </tr>
                 
             </c:forEach>          

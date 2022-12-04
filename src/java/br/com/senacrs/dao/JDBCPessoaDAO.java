@@ -74,6 +74,7 @@ public class JDBCPessoaDAO implements PessoaDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Pessoa pessoa = new Pessoa();
+                pessoa.setId(rs.getInt("id"));
                 pessoa.setNome(rs.getString("nome"));
                 pessoa.setSobrenome(rs.getString("sobrenome"));
                 pessoa.getEndereco().setBairro(rs.getString("bairro"));
@@ -98,9 +99,11 @@ public class JDBCPessoaDAO implements PessoaDAO {
         try {
             String SQL = "SELECT * FROM pessoa WHERE id=?";
             PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             rs.next();
             pessoa = new Pessoa();
+            pessoa.setId(id);
             pessoa.setNome(rs.getString("nome"));
             pessoa.setSobrenome(rs.getString("sobrenome"));
             pessoa.getEndereco().setBairro(rs.getString("bairro"));
@@ -121,8 +124,8 @@ public class JDBCPessoaDAO implements PessoaDAO {
                 ps.setString(1, pessoa.getNome());
                 ps.setString(2, pessoa.getSobrenome());
                 ps.setString(3, pessoa.getEndereco().getCep());
-                ps.setString(3, pessoa.getEndereco().getRua());
-                ps.setString(3, pessoa.getEndereco().getBairro());
+                ps.setString(4, pessoa.getEndereco().getRua());
+                ps.setString(5, pessoa.getEndereco().getBairro());
                 ps.setInt(6, pessoa.getId());
                 
                 ps.executeUpdate();
